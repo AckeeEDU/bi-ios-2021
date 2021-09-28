@@ -207,29 +207,3 @@ Aplikací view modifieru vzniká nové `View`
 ---
 
 ![w:450 center](post.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
