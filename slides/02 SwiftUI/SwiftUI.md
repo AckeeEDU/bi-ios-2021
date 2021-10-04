@@ -28,6 +28,7 @@ style: |
     background-color: transparent!important;
   }
 ---
+
 <!-- _class: lead -->
 
 # SwiftUI
@@ -207,3 +208,7 @@ Aplikací view modifieru vzniká nové `View`
 ---
 
 ![w:450 center](post.png)
+
+---
+
+![w:340 center](breakdown.png)

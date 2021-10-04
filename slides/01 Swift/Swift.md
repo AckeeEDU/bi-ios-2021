@@ -1,3 +1,36 @@
+---
+style: |
+  section h1 {
+    font-size: 500%;
+    text-align: center;
+    color: #000;
+  }
+
+  section h2 {
+    font-size: 250%;
+    text-align: center;
+  }
+
+  section {
+    justify-content: start;
+  }
+
+  section.lead {
+    justify-content: center;
+  }
+  
+  img[alt~="center"] {
+    display: block;
+    margin: 0 auto;
+  }
+  
+  img {
+    background-color: transparent!important;
+  }
+---
+
+<!-- _class: lead -->
+
 # Základy Swiftu
 
 ---
@@ -229,6 +262,8 @@ case default:
 }
 ```
 
+Při použití `case default` přijde o compile check, že jste použili všechny případy
+
 ---
 
 ## Struct
@@ -321,12 +356,13 @@ p1.name = "Honza" // Good
 
 ## Class
 
-Reference-type a nemá implicitní `init`
+Reference-type a nemá implicitní `init`, který ale lze nechat vygenerovat
 
 ```swift
 class Person {
-    let name: String
+    var name: String
     let surname: String
+    lazy var fullName = name + " " + surname
     
     init(name: String, surname: String) {
         self.name = name
@@ -335,6 +371,9 @@ class Person {
 }
 
 let person = Person(name: "Lukáš", surname: "Hromadník")
+print(person.name, person.surname) // prints Lukáš Hromadník
+person.name = "Jan"
+print(person.fullName) // prints Jan Hromadník
 ```
 
 ---
@@ -455,7 +494,6 @@ extension Dog: Animal {
 ```swift
 protocol Animal {
     var sound: String { get /* set */ }
-    func makeSound()
 }
 
 extension Animal {
@@ -491,11 +529,12 @@ struct Person {
 
 ```swift
     // Visible in the current module
+    // Very similar to `protected` in other languages
     // Also this is default
     internal let name: String
     
     // Visible outside of the module, e.g. imported framework
-    public let surname: String
+    public private(set) var surname: String
     
     // Can be overriden outside the module
     open let age: Int
@@ -535,4 +574,101 @@ public extension Person {
 // Outside the module
 let person = Person(id: 1, name: "User")
 person.makeSound() // print I am User
+```
+
+---
+
+## Generika
+
+```swift
+class Stack<Element> {
+    private var items: [Element] = []
+    
+    func push(_ item: Element) {
+        items.append(item)
+    }
+    
+    func pop() -> Element {
+        items.removeLast()
+    }
+}
+
+let stack = Stack<Int>()
+```
+
+---
+
+## Closures
+
+Blok kódu, který může zachytit hodnoty proměnných ve jeho scope
+
+```swift
+let closure: (Int) -> String = { number -> String in
+    return String(number)
+}
+```
+
+---
+
+## Closures
+
+```swift
+let closure: (Int) -> String = { number -> String in
+    return String(number)
+}
+
+let closure: (Int) -> String = { number in
+    String(number)
+}
+
+let closure: (Int) -> String = { String($0) }
+
+let closure: (Int) -> String = String.init
+```
+
+---
+
+## Trailing closure syntax
+
+```swift
+func travel(action: () -> Void) {
+    print("I'm getting ready to go.")
+    action()
+    print("I arrived!")
+}
+
+travel(action: { print("On vacation") })
+
+travel() {
+    print("On vacation")
+}
+
+travel {
+    print("On vacation")
+}
+```
+
+---
+
+## Multiple trailing closures
+
+```swift
+struct Button<Content: View> {
+    init(
+        action: () -> Void,
+        label: () -> Content
+    )
+}
+
+let button = Button(
+    action: { },
+    label: { }
+)
+
+let button = Button {
+    // action
+} label: {
+    // closure pro nastavení label
+}
+
 ```
