@@ -23,14 +23,34 @@ V průběhu kurzu doporučujeme shlédnout online přednášky ze Stanfordu, kte
 ## Přednášky
 
 ### 01 Xcode, Swift Basics
+* Xcode
+* Swift
+  * `String`, `Int`, `Bool`, `Double`
+  * podmínky, cykly
+  * `Optional`
 
 ### 02 SwiftUI Basics
+* Swift
+  * Pole, dictionaries, tuples
+  * `struct`, `enum`, `class`
+  * Protokoly, extensions
+  * Access control
+  * Generika
+  * Trailing closure syntax
+* SwiftUI
+  * `View`, `some`, `@ViewBuilder`
+  * `VStack`, `HStack`, `Text`, `Button`, `Image`
+  * SFSymboly
 
 ### 03 More SwiftUI
 
 ### 04 Navigace
 
 ### 05 Networking, multithreading
+* `DispatchGroup`, `.main` + `.global()`, `sync` + `async`
+* REST API
+* `URLRequest`
+* `Codable`
 
 ### 06 MVVM
 
