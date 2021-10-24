@@ -15,10 +15,13 @@
 | 11 Animations | TBD | [ViewModifier Animation](https://youtu.be/PoeaUMGAx6c)<br>[Animation Demo](https://youtu.be/-N1UR7Y105g) |
 | 12 TBD | TBD | TBD |
 
-
-## Online přednášky
-
 V průběhu kurzu doporučujeme shlédnout online přednášky ze Stanfordu, které slouží jako hlavní zdroj informací pro tento kurz [https://cs193p.sites.stanford.edu](https://cs193p.sites.stanford.edu).
+
+## Obsah
+
+* [1. domácí úkol](#1-domácí-úkol)
+* [Semestrální práce](#semestrální-práce)
+* [Summary přednášek](#přednášky)
 
 ## 1. domácí úkol
 
