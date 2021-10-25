@@ -80,8 +80,28 @@ Rozsah práce by mělo být 3 - 5 obrazovek (může být míň, pokud to dává 
   * SFSymboly
 
 ### 03 More SwiftUI
+* Sizing (top-down, bottom-up)
+* View modifiers
+* `LazyVGrid`/`LazyHGrid`
+* `ForEach`
+* `ScrollView`
+* Protocols
+  * `Equatable`
+  * `Hashable`
+  * `Identifiable`
+  * `Comparable`
+* `NavigationView`, `NavigationLink`
 
 ### 04 Navigace
+* Xcode shortcuts
+* `List`
+* Property wrappers
+* `@State`, `@Binding`, `@Environment`
+* View presentation
+  * Alert
+  * Sheet
+  * `fullScreenCover`
+* `TabView`
 
 ### 05 Networking, multithreading
 * `DispatchGroup`, `.main` + `.global()`, `sync` + `async`
