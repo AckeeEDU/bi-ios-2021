@@ -110,6 +110,16 @@ Rozsah práce by mělo být 3 - 5 obrazovek (může být míň, pokud to dává 
 * `Codable`
 
 ### 06 MVVM
+* proč MVVM
+* opáčko value types vs. ref types
+* rozšíření `enum`ů o associated values
+* základy error handlingu
+
+#### API
+* api, které používáme běží na [https://fitstagram.ackee.cz/api/](https://fitstagram.ackee.cz/api/)
+* je to jen pro účely tohohle předmětu, tak na něj buďte hodní 😎
+* má to i nějakou [dokumentaci](https://fitstagram.ackee.cz/docs/)
+* ne nutně všechno z dokumentace je zatím naimplementovaný, dodělává se to podle toho, jak je to potřeba na cviko
 
 ### 07 MVVM + UIImagePicker
 
