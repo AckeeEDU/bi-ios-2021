@@ -2,16 +2,10 @@ import Foundation
 import SwiftUI
 
 class CommentsViewModel: ObservableObject {
-    enum DataState {
-        case loading
-        case comments([Comment])
-        case error(Error)
-    }
-    
-    @Published private(set) var state = DataState.comments([])
+    @Published private(set) var state = DataState<[Comment]>.loaded([])
     @Published var isNewCommentShown = false
     
-    private let postID: Post.ID
+    let postID: Post.ID
     
     // MARK: - Initializers
     
@@ -27,19 +21,19 @@ class CommentsViewModel: ObservableObject {
         request.httpMethod = "GET"
 
         let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
-            DispatchQueue.main.async {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 if let error = error {
                     self?.state = .error(error)
                     return
                 }
                 
                 guard let data = data else {
-                    self?.state = .comments([])
+                    self?.state = .loaded([])
                     return
                 }
                 
                 do {
-                    self?.state = .comments(try JSONDecoder().decode([Comment].self, from: data))
+                    self?.state = .loaded(try JSONDecoder().decode([Comment].self, from: data))
                 } catch {
                     self?.state = .error(error)
                     print(error)

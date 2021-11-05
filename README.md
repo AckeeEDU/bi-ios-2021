@@ -123,6 +123,10 @@ Rozsah práce by mělo být 3 - 5 obrazovek (může být míň, pokud to dává 
 
 ### 07 MVVM + UIImagePicker
 
+* dokončení MVVM
+* jednoduchá integrace starších UIKit API do SwiftUI
+* výběr fotky z galerie pomocí `UIImagePickerController`
+
 ### 08 Map
 
 ### 09 Shapes

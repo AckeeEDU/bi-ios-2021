@@ -17,7 +17,7 @@ struct ContentView: View {
             }
             
             NavigationView {
-                ProfileView()
+                ProfileView(viewModel: .init())
             }.tabItem {
                 Label("Profil", systemImage: "person")
             }

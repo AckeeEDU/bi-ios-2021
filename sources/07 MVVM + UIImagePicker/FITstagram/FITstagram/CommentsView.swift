@@ -17,7 +17,11 @@ struct CommentsView: View {
             }
             .fullScreenCover(isPresented: $viewModel.isNewCommentShown) {
                 NavigationView {
-                    NewCommentView(isPresented: $viewModel.isNewCommentShown)
+                    NewCommentView(
+                        viewModel: .init(postID: viewModel.postID, isPresented: $viewModel.isNewCommentShown)
+                    ).onDisappear {
+                        viewModel.fetchComments()
+                    }
                 }
             }
             .navigationBarTitle("Komentáře")
@@ -34,7 +38,7 @@ struct CommentsView: View {
 }
 
 private struct CommentsContentView: View {
-    let state: CommentsViewModel.DataState
+    let state: DataState<[Comment]>
     
     var body: some View {
         switch state {
@@ -43,7 +47,7 @@ private struct CommentsContentView: View {
                 .progressViewStyle(CircularProgressViewStyle())
         case .error:
             Text("Komentáře se nepodařilo načíst")
-        case .comments(let comments):
+        case .loaded(let comments):
             List(comments, id: \.id) { comment in
                 Group {
                     Text(comment.author.username)

@@ -95,7 +95,7 @@ struct PostView_Previews: PreviewProvider {
                 id: "",
                 author: .dummy,
                 likes: 1024,
-                photos: [URL(string: "https://placeimg.com/320/320")!],
+                photos: [],
                 description: "dummy.description",
                 comments: 10
             )
