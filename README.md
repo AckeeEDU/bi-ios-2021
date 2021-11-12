@@ -127,7 +127,11 @@ Rozsah práce by mělo být 3 - 5 obrazovek (může být míň, pokud to dává 
 * jednoduchá integrace starších UIKit API do SwiftUI
 * výběr fotky z galerie pomocí `UIImagePickerController`
 
-### 08 Map
+### 08 Ukol + Environment
+
+* ukázkové řešení prvního úkolu
+* Environment & [`EnvironmentValues`](https://developer.apple.com/documentation/swiftui/environmentvalues)
+* konzultace
 
 ### 09 Shapes
 
