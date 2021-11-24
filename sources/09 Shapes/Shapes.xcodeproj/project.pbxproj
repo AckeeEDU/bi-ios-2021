@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A39B27B3274E561B00F4204A /* Rectangle2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B27B2274E561B00F4204A /* Rectangle2.swift */; };
 		A39B27BB274E63D700F4204A /* PieceOfCake.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B27BA274E63D700F4204A /* PieceOfCake.swift */; };
+		A39B27BD274E642000F4204A /* Polygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39B27BC274E642000F4204A /* Polygon.swift */; };
 		A3B39A14274AAAEC0078D2B1 /* ShapesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B39A13274AAAEC0078D2B1 /* ShapesApp.swift */; };
 		A3B39A16274AAAEC0078D2B1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B39A15274AAAEC0078D2B1 /* ContentView.swift */; };
 		A3B39A18274AAAEC0078D2B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3B39A17274AAAEC0078D2B1 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* Begin PBXFileReference section */
 		A39B27B2274E561B00F4204A /* Rectangle2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rectangle2.swift; sourceTree = "<group>"; };
 		A39B27BA274E63D700F4204A /* PieceOfCake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieceOfCake.swift; sourceTree = "<group>"; };
+		A39B27BC274E642000F4204A /* Polygon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Polygon.swift; sourceTree = "<group>"; };
 		A3B39A10274AAAEC0078D2B1 /* Shapes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shapes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3B39A13274AAAEC0078D2B1 /* ShapesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesApp.swift; sourceTree = "<group>"; };
 		A3B39A15274AAAEC0078D2B1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 				A3B39A13274AAAEC0078D2B1 /* ShapesApp.swift */,
 				A39B27B2274E561B00F4204A /* Rectangle2.swift */,
 				A39B27BA274E63D700F4204A /* PieceOfCake.swift */,
+				A39B27BC274E642000F4204A /* Polygon.swift */,
 				A3B39A15274AAAEC0078D2B1 /* ContentView.swift */,
 				A3B39A17274AAAEC0078D2B1 /* Assets.xcassets */,
 				A3B39A19274AAAEC0078D2B1 /* Preview Content */,
@@ -144,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3B39A16274AAAEC0078D2B1 /* ContentView.swift in Sources */,
+				A39B27BD274E642000F4204A /* Polygon.swift in Sources */,
 				A3B39A14274AAAEC0078D2B1 /* ShapesApp.swift in Sources */,
 				A39B27B3274E561B00F4204A /* Rectangle2.swift in Sources */,
 				A39B27BB274E63D700F4204A /* PieceOfCake.swift in Sources */,
