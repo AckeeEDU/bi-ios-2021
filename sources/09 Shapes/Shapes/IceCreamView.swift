@@ -59,7 +59,14 @@ struct IceCreamView: View {
                     )
 
                 Cone()
-                    .fill(coneColor)
+//                    .fill(coneColor)
+                    .fill(
+                        LinearGradient(
+                            colors: [.orange, .green],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
                     .frame(
                         width: proxy.size.width,
                         height: proxy.size.height - proxy.size.width / 8 * 3
