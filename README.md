@@ -10,10 +10,10 @@
 | 06 MVVM | JO | [MVVM](https://youtu.be/--qKOhdgJAs)<br>[More MVVM enum Optionals](https://youtu.be/oWZOFSYS5GE) |
 | 07 MVVM + UIImagePicker | JO | [MVVM](https://youtu.be/--qKOhdgJAs)<br>[More MVVM enum Optionals](https://youtu.be/oWZOFSYS5GE) |
 | 08 Map | JO | Není |
-| 09 Shapes | TBD | [Protocols Shapes](https://www.youtube.com/watch?v=Og9gXZpbKWo) |
-| 10 Gestures |TBD | [EmojiArt Drag/Drop](https://youtu.be/eNS5EzgK3lY)<br>[Gestures](https://youtu.be/iszjyoo3SYI) |
-| 11 Animations | TBD | [ViewModifier Animation](https://youtu.be/PoeaUMGAx6c)<br>[Animation Demo](https://youtu.be/-N1UR7Y105g) |
-| 12 TBD | TBD | TBD |
+| 09 Shapes | LH | [Protocols Shapes](https://www.youtube.com/watch?v=Og9gXZpbKWo) |
+| 10 Gestures |LH | [EmojiArt Drag/Drop](https://youtu.be/eNS5EzgK3lY)<br>[Gestures](https://youtu.be/iszjyoo3SYI) |
+| 11 Animations | IR | [ViewModifier Animation](https://youtu.be/PoeaUMGAx6c)<br>[Animation Demo](https://youtu.be/-N1UR7Y105g) |
+| 12 TBD | LH | TBD |
 
 V průběhu kurzu doporučujeme shlédnout online přednášky ze Stanfordu, které slouží jako hlavní zdroj informací pro tento kurz [https://cs193p.sites.stanford.edu](https://cs193p.sites.stanford.edu).
 
@@ -164,6 +164,11 @@ Rozsah práce by mělo být 3 - 5 obrazovek (může být míň, pokud to dává 
 * konzultace
 
 ### 09 Shapes
+
+* Definice `Shapes` a `Path`, na co je vhodné to použít.
+* Ukázky: `Rectangle`, `PieceOfCake`, `Polygon`
+* `GeometryReader` a jeho použití
+* Ukázka: `BarChart`
 
 ### 10 Gestures
 
