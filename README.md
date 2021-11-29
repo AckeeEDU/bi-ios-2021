@@ -70,7 +70,7 @@ Pro vytvoření příspěvku použijte tento [endpoint](https://fitstagram.ackee
 
 Fotografie je potřeba před odesláním na server upravit.
 
-1. Větší rozměr fotografie nesmí přesáhnout 2048. Může tedy vzniknout potřeba obrázek zmenšit. 
+1. Šířka ani výška fotografie nesmí přesáhnout 2048 pixelů. Může tedy vzniknout potřeba obrázek zmenšit. 
 2. Fotky posílejte na server jako JPEG zakódovaný do řetězce pomocí base64.
 
 Obě výše zmíněné operace jsme na cvikách neukazovali, ale jednoduchým Googlením se dostanete k odpovědím. Pokud by se nedařilo, dáme vám k dispozici kód, pomocí kterého to uděláte. Záměrně vám to nechceme dávat hned na začátek, ať si to můžete zkusit. Opravdu to není nic složitého.
