@@ -17,6 +17,10 @@ extension View {
                     Rectangle()
                         .stroke()
                 )
+//                .background(
+//                    Rectangle()
+//                        .fill(Color.red)
+//                )
         } else {
             self
         }
@@ -31,14 +35,19 @@ struct EmojiView: View {
     @GestureState private var currentOffset: CGSize = .zero
     @State private var offset: CGSize = .zero
 
+    @GestureState private var currentScale: CGFloat = 1
+    @State private var scale: CGFloat = 0
+
     var body: some View {
         Text(emoji)
             .selectedFrame(isSelected)
             .offset(offset + currentOffset)
+            .scaleEffect(scale + currentScale)
             .onTapGesture {
                 isSelected.toggle()
             }
             .gesture(isSelected ? dragGesture : nil)
+            .gesture(isSelected ? magnificationGesture : nil)
     }
 
     private var dragGesture: some Gesture {
@@ -52,6 +61,12 @@ struct EmojiView: View {
             .onEnded {
                 offset += $0.translation
             }
+    }
+
+    private var magnificationGesture: some Gesture {
+        MagnificationGesture()
+            .updating($currentScale) { value, state, _ in state = value }
+            .onEnded { scale += $0 - 1 }
     }
 }
 

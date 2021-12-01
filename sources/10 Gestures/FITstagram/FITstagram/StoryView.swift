@@ -24,7 +24,7 @@ struct StoryView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var isEmojisPresented = false
 
-    @State private var views: [IdentifiableView] = []
+    @State private var views: [IdentifiableView] = [IdentifiableView { EmojiView(emoji: "🤬") }]
 
     var body: some View {
         ZStack {
