@@ -7,13 +7,30 @@
 
 import SwiftUI
 
+struct IdentifiableView: View, Identifiable {
+    let id = UUID()
+    let content: AnyView
+
+    init<Content: View>(content: () -> Content) {
+        self.content = AnyView(content())
+    }
+
+    var body: some View {
+        content
+    }
+}
+
 struct StoryView: View {
     @Environment(\.dismiss) private var dismiss
-    @State var isEmojisPresented = false
+    @State private var isEmojisPresented = false
+
+    @State private var views: [IdentifiableView] = []
 
     var body: some View {
         ZStack {
-            Text("Stories")
+            ForEach(views) { view in
+                view
+            }
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
@@ -26,7 +43,10 @@ struct StoryView: View {
         }
         .sheet(isPresented: $isEmojisPresented) {
             NavigationView {
-                EmojisView()
+                EmojisView { emoji in
+                    let view = IdentifiableView { Text(emoji) }
+                    views.append(view)
+                }
             }
         }
     }

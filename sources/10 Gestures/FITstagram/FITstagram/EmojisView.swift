@@ -22,6 +22,8 @@ let emojis: [String] = {
 }()
 
 struct EmojisView: View {
+    var onEmojiSelected: (String) -> Void
+
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
@@ -29,7 +31,8 @@ struct EmojisView: View {
             LazyVGrid(columns: (0..<7).map { _ in GridItem(spacing: 2) }, spacing: 2) {
                 ForEach(emojis, id: \.self) { emoji in
                     Button {
-
+                        onEmojiSelected(emoji)
+                        dismiss()
                     } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 4)
@@ -54,6 +57,6 @@ struct EmojisView: View {
 
 struct EmojisView_Previews: PreviewProvider {
     static var previews: some View {
-        EmojisView()
+        EmojisView { _ in }
     }
 }
