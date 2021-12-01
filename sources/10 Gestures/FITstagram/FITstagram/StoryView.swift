@@ -9,20 +9,26 @@ import SwiftUI
 
 struct StoryView: View {
     @Environment(\.dismiss) private var dismiss
+    @State var isEmojisPresented = false
 
     var body: some View {
         ZStack {
             Text("Stories")
         }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button { dismiss() } label: { Image(systemName: "xmark") }
-                }
-
-                ToolbarItemGroup(placement: .bottomBar) {
-                    Button { } label: { Image(systemName: "face.smiling") }
-                }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button { dismiss() } label: { Image(systemName: "xmark") }
             }
+
+            ToolbarItemGroup(placement: .bottomBar) {
+                Button { isEmojisPresented = true } label: { Image(systemName: "face.smiling") }
+            }
+        }
+        .sheet(isPresented: $isEmojisPresented) {
+            NavigationView {
+                EmojisView()
+            }
+        }
     }
 }
 

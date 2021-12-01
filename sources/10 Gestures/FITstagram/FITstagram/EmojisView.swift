@@ -22,6 +22,8 @@ let emojis: [String] = {
 }()
 
 struct EmojisView: View {
+    @Environment(\.dismiss) private var dismiss
+
     var body: some View {
         ScrollView {
             LazyVGrid(columns: (0..<7).map { _ in GridItem(spacing: 2) }, spacing: 2) {
@@ -39,7 +41,13 @@ struct EmojisView: View {
                     .aspectRatio(1, contentMode: .fit)
                 }
             }
-            .padding(.horizontal, 4)
+            .padding(4)
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button { dismiss() } label: { Image(systemName: "xmark") }
+            }
         }
     }
 }
