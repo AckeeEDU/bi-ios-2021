@@ -20,11 +20,51 @@ struct IdentifiableView: View, Identifiable {
     }
 }
 
+extension CGPoint: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(x)
+        hasher.combine(y)
+    }
+}
+
+struct DrawingView: View {
+    @State var drawings: [[CGPoint]] = [[]]
+
+    var body: some View {
+        GeometryReader { proxy in
+            ZStack {
+                Color.red.opacity(0.001)
+
+                ForEach(drawings, id: \.self) { drawing in
+                    Path { path in
+                        guard drawing.isEmpty == false else { return }
+                        path.move(to: drawing.first!)
+                        path.addLines(drawing)
+                    }
+                    .stroke(.black)
+                }
+            }
+            .frame(width: proxy.size.width, height: proxy.size.height)
+            .gesture(
+                DragGesture()
+                    .onChanged { value in
+                        let index = drawings.count - 1
+                        let points = drawings[index] + [value.location]
+                        drawings[index] = points
+                    }
+                    .onEnded { _ in
+                        drawings.append([])
+                    }
+            )
+        }
+    }
+}
+
 struct StoryView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var isEmojisPresented = false
 
-    @State private var views: [IdentifiableView] = [IdentifiableView { EmojiView(emoji: "🤬") }]
+    @State private var views: [IdentifiableView] = []//IdentifiableView { EmojiView(emoji: "🤬") }]
 
     var body: some View {
         ZStack {
@@ -39,6 +79,12 @@ struct StoryView: View {
 
             ToolbarItemGroup(placement: .bottomBar) {
                 Button { isEmojisPresented = true } label: { Image(systemName: "face.smiling") }
+
+                Button {
+                    views.append(IdentifiableView { DrawingView() })
+                } label: {
+                    Image(systemName: "pencil")
+                }
             }
         }
         .sheet(isPresented: $isEmojisPresented) {
