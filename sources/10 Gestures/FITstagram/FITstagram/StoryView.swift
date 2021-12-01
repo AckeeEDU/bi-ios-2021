@@ -44,7 +44,7 @@ struct StoryView: View {
         .sheet(isPresented: $isEmojisPresented) {
             NavigationView {
                 EmojisView { emoji in
-                    let view = IdentifiableView { Text(emoji) }
+                    let view = IdentifiableView { EmojiView(emoji: emoji) }
                     views.append(view)
                 }
             }
