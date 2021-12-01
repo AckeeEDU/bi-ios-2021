@@ -38,11 +38,15 @@ struct EmojiView: View {
     @GestureState private var currentScale: CGFloat = 1
     @State private var scale: CGFloat = 0
 
+    @GestureState private var currentAngle: Angle = .zero
+    @State private var angle: Angle = .zero
+
     var body: some View {
         Text(emoji)
             .selectedFrame(isSelected)
-            .offset(offset + currentOffset)
             .scaleEffect(scale + currentScale)
+            .rotationEffect(angle + currentAngle)
+            .offset(offset + currentOffset)
             .onTapGesture {
                 isSelected.toggle()
             }
@@ -67,6 +71,13 @@ struct EmojiView: View {
         MagnificationGesture()
             .updating($currentScale) { value, state, _ in state = value }
             .onEnded { scale += $0 - 1 }
+            .simultaneously(with: rotationGesture)
+    }
+
+    private var rotationGesture: some Gesture {
+        RotationGesture()
+            .updating($currentAngle) { value, state, _ in state = value }
+            .onEnded { angle += $0 }
     }
 }
 
