@@ -11,10 +11,16 @@ struct StoryView: View {
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
-        Text("Stories")
+        ZStack {
+            Text("Stories")
+        }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button { dismiss() } label: { Image(systemName: "xmark") }
+                }
+
+                ToolbarItemGroup(placement: .bottomBar) {
+                    Button { } label: { Image(systemName: "face.smiling") }
                 }
             }
     }
