@@ -29,11 +29,22 @@
 		A303AA0A2720376E00C4B6DD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A303AA092720376E00C4B6DD /* ProfileView.swift */; };
 		A303AA0C27203C8E00C4B6DD /* RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A303AA0B27203C8E00C4B6DD /* RemoteImage.swift */; };
 		A303AA0E272049DD00C4B6DD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A303AA0D272049DD00C4B6DD /* User.swift */; };
+		A36F0D3E276A5E2200ABD783 /* FITstagramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F0D3D276A5E2200ABD783 /* FITstagramTests.swift */; };
 		A37D31E8276A1F22000132A3 /* NewPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D31E7276A1F22000132A3 /* NewPostView.swift */; };
 		A3D4F1F62757AC250025B264 /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D4F1F52757AC250025B264 /* StoryView.swift */; };
 		A3D4F1F82757AD880025B264 /* EmojisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D4F1F72757AD880025B264 /* EmojisView.swift */; };
 		A3D4F1FA2757B31C0025B264 /* EmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D4F1F92757B31C0025B264 /* EmojiView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A36F0D3F276A5E2200ABD783 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 786ADC18270C732400A9C0D7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 786ADC1F270C732400A9C0D7;
+			remoteInfo = FITstagram;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		69084D82273139F100C9427F /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -59,6 +70,8 @@
 		A303AA092720376E00C4B6DD /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		A303AA0B27203C8E00C4B6DD /* RemoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImage.swift; sourceTree = "<group>"; };
 		A303AA0D272049DD00C4B6DD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A36F0D3B276A5E2200ABD783 /* FITstagramTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FITstagramTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A36F0D3D276A5E2200ABD783 /* FITstagramTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FITstagramTests.swift; sourceTree = "<group>"; };
 		A37D31E7276A1F22000132A3 /* NewPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostView.swift; sourceTree = "<group>"; };
 		A3D4F1F52757AC250025B264 /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
 		A3D4F1F72757AD880025B264 /* EmojisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisView.swift; sourceTree = "<group>"; };
@@ -73,6 +86,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A36F0D38276A5E2200ABD783 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -80,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				786ADC22270C732400A9C0D7 /* FITstagram */,
+				A36F0D3C276A5E2200ABD783 /* FITstagramTests */,
 				786ADC21270C732400A9C0D7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				786ADC20270C732400A9C0D7 /* FITstagram.app */,
+				A36F0D3B276A5E2200ABD783 /* FITstagramTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -133,6 +155,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		A36F0D3C276A5E2200ABD783 /* FITstagramTests */ = {
+			isa = PBXGroup;
+			children = (
+				A36F0D3D276A5E2200ABD783 /* FITstagramTests.swift */,
+			);
+			path = FITstagramTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -153,6 +183,24 @@
 			productReference = 786ADC20270C732400A9C0D7 /* FITstagram.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A36F0D3A276A5E2200ABD783 /* FITstagramTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A36F0D43276A5E2200ABD783 /* Build configuration list for PBXNativeTarget "FITstagramTests" */;
+			buildPhases = (
+				A36F0D37276A5E2200ABD783 /* Sources */,
+				A36F0D38276A5E2200ABD783 /* Frameworks */,
+				A36F0D39276A5E2200ABD783 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A36F0D40276A5E2200ABD783 /* PBXTargetDependency */,
+			);
+			name = FITstagramTests;
+			productName = FITstagramTests;
+			productReference = A36F0D3B276A5E2200ABD783 /* FITstagramTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -160,11 +208,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1300;
+				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
 					786ADC1F270C732400A9C0D7 = {
 						CreatedOnToolsVersion = 13.0;
+					};
+					A36F0D3A276A5E2200ABD783 = {
+						CreatedOnToolsVersion = 13.2;
+						TestTargetID = 786ADC1F270C732400A9C0D7;
 					};
 				};
 			};
@@ -182,6 +234,7 @@
 			projectRoot = "";
 			targets = (
 				786ADC1F270C732400A9C0D7 /* FITstagram */,
+				A36F0D3A276A5E2200ABD783 /* FITstagramTests */,
 			);
 		};
 /* End PBXProject section */
@@ -193,6 +246,13 @@
 			files = (
 				786ADC2B270C732700A9C0D7 /* Preview Assets.xcassets in Resources */,
 				786ADC28270C732700A9C0D7 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A36F0D39276A5E2200ABD783 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,7 +290,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A36F0D37276A5E2200ABD783 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A36F0D3E276A5E2200ABD783 /* FITstagramTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A36F0D40276A5E2200ABD783 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 786ADC1F270C732400A9C0D7 /* FITstagram */;
+			targetProxy = A36F0D3F276A5E2200ABD783 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		786ADC2C270C732700A9C0D7 /* Debug */ = {
@@ -415,6 +491,42 @@
 			};
 			name = Release;
 		};
+		A36F0D41276A5E2200ABD783 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cz.ackee.FITstagramTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FITstagram.app/FITstagram";
+			};
+			name = Debug;
+		};
+		A36F0D42276A5E2200ABD783 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cz.ackee.FITstagramTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FITstagram.app/FITstagram";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -432,6 +544,15 @@
 			buildConfigurations = (
 				786ADC2F270C732700A9C0D7 /* Debug */,
 				786ADC30270C732700A9C0D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A36F0D43276A5E2200ABD783 /* Build configuration list for PBXNativeTarget "FITstagramTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A36F0D41276A5E2200ABD783 /* Debug */,
+				A36F0D42276A5E2200ABD783 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
