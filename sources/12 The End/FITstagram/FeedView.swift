@@ -45,7 +45,7 @@ struct FeedView: View {
 
     var body: some View {
         ZStack {
-            NavigationLink.init(isActive: $viewModel.showNewPost, destination: { NewPostView() }) {
+            NavigationLink.init(isActive: $viewModel.showNewPost, destination: { NewPostView(viewModel: NewPostViewModel()) }) {
                 EmptyView()
             }
             

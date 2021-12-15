@@ -7,7 +7,13 @@
 
 import SwiftUI
 
+final class NewPostViewModel: ObservableObject {
+    @Published var description = ""
+}
+
 struct NewPostView: View {
+    @ObservedObject var viewModel: NewPostViewModel
+    
     var body: some View {
         GeometryReader { proxy in
             ScrollView {
@@ -24,10 +30,10 @@ struct NewPostView: View {
                         .font(.system(.headline))
                         .padding(.top, 32)
                     
-                    TextField("Description", text: .constant(""))
+                    TextField("Description", text: $viewModel.description)
                         .padding(.top, 8)
                     
-                    Spacer()
+                    Spacer(minLength: 32)
                     
                     Button {
                         // TODO: Implement
@@ -53,7 +59,7 @@ struct NewPostView: View {
 struct NewPostView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            NewPostView()
+            NewPostView(viewModel: NewPostViewModel())
         }
     }
 }
