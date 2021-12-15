@@ -19,10 +19,32 @@ enum Sheet: Identifiable {
     }
 }
 
+final class PostsRepository: ObservableObject {
+    @Published var posts: [Post] {
+        didSet {
+            let encoded = try! JSONEncoder().encode(posts)
+            UserDefaults.standard.setValue(encoded, forKey: "posts")
+        }
+    }
+    
+    init() {
+        if let postsData = UserDefaults.standard.value(forKey: "posts") as? Data {
+            let decoded = try? JSONDecoder().decode([Post].self, from: postsData)
+            self.posts = decoded ?? []
+        } else {
+            self.posts = []
+        }
+    }
+}
+
 final class FeedViewModel: ObservableObject {
-    @Published var posts: [Post] = []
+    let postsRepository: PostsRepository
     @Published var selectedSheet: Sheet?
     @Published var showNewPost = false
+    
+    init(postsRepository: PostsRepository) {
+        self.postsRepository = postsRepository
+    }
     
     func fetchPosts() {
         let url = URL(string: "https://fitstagram.ackee.cz/api/feed")!
@@ -33,7 +55,7 @@ final class FeedViewModel: ObservableObject {
             guard let data = data else { return }
             
             DispatchQueue.main.async {
-                self?.posts = try! JSONDecoder().decode([Post].self, from: data)
+                self?.postsRepository.posts = try! JSONDecoder().decode([Post].self, from: data)
             }
         }
         task.resume()
@@ -41,6 +63,7 @@ final class FeedViewModel: ObservableObject {
 }
 
 struct FeedView: View {
+    @EnvironmentObject var postsRepository: PostsRepository
     @ObservedObject var viewModel: FeedViewModel
 
     var body: some View {
@@ -51,7 +74,7 @@ struct FeedView: View {
             
             ScrollView {
                 LazyVStack {
-                    ForEach(viewModel.posts, id: \.id) { post in
+                    ForEach(postsRepository.posts, id: \.id) { post in
                         VStack(alignment: .leading, spacing: 8) {
                             PostView(post: post)
                                 .onTapGesture {
@@ -101,7 +124,7 @@ struct FeedView: View {
 struct FeedView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            FeedView(viewModel: FeedViewModel())
+            FeedView(viewModel: FeedViewModel(postsRepository: PostsRepository()))
         }
     }
 }

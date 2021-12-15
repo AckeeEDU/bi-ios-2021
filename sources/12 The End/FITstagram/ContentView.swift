@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    let postsRepository = PostsRepository()
+    
     var body: some View {
         TabView {
             NavigationView {
-                FeedView(viewModel: FeedViewModel())
+                FeedView(viewModel: FeedViewModel(postsRepository: postsRepository))
             }.tabItem {
                 Label("Feed", systemImage: "list.dash")
             }
@@ -22,6 +24,7 @@ struct ContentView: View {
                 Label("Profil", systemImage: "person")
             }
         }
+        .environmentObject(postsRepository)
     }
     
     private func buttonImage(_ systemName: String) -> some View {

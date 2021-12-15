@@ -37,4 +37,15 @@ extension Post: Codable {
         description = try container.decode(String.self, forKey: .description)
         comments = try container.decode(Int.self, forKey: .comments)
     }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(author, forKey: .author)
+        let authors = (0..<likes).map { _ in Author.dummy }
+        try container.encode(authors, forKey: .likes)
+        try container.encode(photos, forKey: .photos)
+        try container.encode(description, forKey: .description)
+        try container.encode(comments, forKey: .comments)
+    }
 }
