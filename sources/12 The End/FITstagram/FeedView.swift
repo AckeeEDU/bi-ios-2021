@@ -22,20 +22,42 @@ enum Sheet: Identifiable {
 final class FeedViewModel: ObservableObject {
     @Published var posts: [Post] = []
     @Published var selectedSheet: Sheet?
+    @Published var showNewPost = false
+    
+    func fetchPosts() {
+        let url = URL(string: "https://fitstagram.ackee.cz/api/feed")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+            guard let data = data else { return }
+            
+            DispatchQueue.main.async {
+                self?.posts = try! JSONDecoder().decode([Post].self, from: data)
+            }
+        }
+        task.resume()
+    }
 }
 
 struct FeedView: View {
     @ObservedObject var viewModel: FeedViewModel
 
     var body: some View {
-        ScrollView {
-            LazyVStack {
-                ForEach(viewModel.posts, id: \.id) { post in
-                    VStack(alignment: .leading, spacing: 8) {
-                        PostView(post: post)
-                            .onTapGesture {
-                                viewModel.selectedSheet = .detail(post)
-                            }
+        ZStack {
+            NavigationLink.init(isActive: $viewModel.showNewPost, destination: { NewPostView() }) {
+                EmptyView()
+            }
+            
+            ScrollView {
+                LazyVStack {
+                    ForEach(viewModel.posts, id: \.id) { post in
+                        VStack(alignment: .leading, spacing: 8) {
+                            PostView(post: post)
+                                .onTapGesture {
+                                    viewModel.selectedSheet = .detail(post)
+                                }
+                        }
                     }
                 }
             }
@@ -48,7 +70,7 @@ struct FeedView: View {
                     Image(systemName: "magnifyingglass")
                 }
 
-                Button(action: { }) {
+                Button(action: { viewModel.showNewPost = true }) {
                     Image(systemName: "plus")
                 }
 
@@ -60,8 +82,9 @@ struct FeedView: View {
             }
         }
         .onAppear {
-            fetchPosts()
-        }.fullScreenCover(item: $viewModel.selectedSheet, onDismiss: nil) { sheet in
+            viewModel.fetchPosts()
+        }
+        .fullScreenCover(item: $viewModel.selectedSheet, onDismiss: nil) { sheet in
             switch sheet {
             case let .detail(post):
                 DetailView(post: post)
@@ -72,19 +95,6 @@ struct FeedView: View {
                 }
             }
         }
-    }
-
-    private func fetchPosts() {
-        let url = URL(string: "https://fitstagram.ackee.cz/api/feed")!
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data else { return }
-
-            viewModel.posts = try! JSONDecoder().decode([Post].self, from: data)
-        }
-        task.resume()
     }
 }
 
