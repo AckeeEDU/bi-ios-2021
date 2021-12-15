@@ -24,8 +24,8 @@ extension UIImage {
     }
         
     func resized(to size: CGSize) -> UIImage {
-//        let format = UIGraphicsImageRendererFormat()
-//        format.scale = 1
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = 1
 
         return UIGraphicsImageRenderer(size: size, format: format).image { _ in
             draw(in: CGRect(origin: .zero, size: size))
@@ -37,6 +37,12 @@ final class NewPostViewModel: ObservableObject {
     @Published var photo: UIImage?
     @Published var description = ""
     @Published var isPhotoPickerShown = false
+    @Published var isErrorShown = false
+    @Binding var isNewPostShown: Bool
+    
+    init(isNewPostShown: Binding<Bool>) {
+        self._isNewPostShown = isNewPostShown
+    }
     
     func createPost() {
         guard let photo = preparePhoto(photo) else { return }
@@ -49,12 +55,16 @@ final class NewPostViewModel: ObservableObject {
         request.addValue("hromalu1", forHTTPHeaderField: "Authorization")
         
         URLSession.shared
-            .dataTask(with: request) { data, response, error in
-                //print("[DATA]", data)
-                //print("[RESPONSE]", response)
-                //print("[ERROR]", error)
-                if let data = data {
-                    print("[DATA]", String(data: data, encoding: .utf8))
+            .dataTask(with: request) { [weak self] data, response, error in
+                guard let data = data else { return }
+                
+                let decoded = try? JSONDecoder().decode(Post.self, from: data)
+                DispatchQueue.main.async {
+                    if decoded == nil {
+                        self?.isErrorShown = true
+                    } else {
+                        self?.isNewPostShown = false
+                    }
                 }
             }
             .resume()
@@ -147,13 +157,16 @@ struct NewPostView: View {
         .sheet(isPresented: $viewModel.isPhotoPickerShown) {
             ImagePicker(isPresented: $viewModel.isPhotoPickerShown, image: $viewModel.photo)
         }
+        .alert(isPresented: $viewModel.isErrorShown) {
+            Alert(title: Text("Chyba!"), message: Text("Něco se pokazilo"), dismissButton: nil)
+        }
     }
 }
 
 struct NewPostView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            NewPostView(viewModel: NewPostViewModel())
+            NewPostView(viewModel: NewPostViewModel(isNewPostShown: .constant(true)))
         }
     }
 }
