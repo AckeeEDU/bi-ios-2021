@@ -172,6 +172,15 @@ Rozsah práce by mělo být 3 - 5 obrazovek (může být míň, pokud to dává 
 
 ### 10 Gestures
 
+* Základní gesta `DragGesture`, `TapGesture`
+* Spojení Shapes s gesty -> malování prstem po obrazovce
+* `GeometryReader` a jeho možnosti (ne)využití
+
 ### 11 Animations
 
-### 12 TBD
+### 12 Final one
+
+* Implementace druhého domácího úkolu
+* Základní persistence
+* Unit testy
+
