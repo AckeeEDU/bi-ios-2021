@@ -7,10 +7,81 @@
 
 import SwiftUI
 
+struct NewPost: Encodable {
+    let text: String
+    let photos: [String]
+}
+
+extension UIImage {
+    func imageSizeInPixel() -> CGSize {
+        let heightInPoints = size.height
+        let heightInPixels = heightInPoints * scale
+
+        let widthInPoints = size.width
+        let widthInPixels = widthInPoints * scale
+
+        return CGSize(width: widthInPixels, height: heightInPixels)
+    }
+        
+    func resized(to size: CGSize) -> UIImage {
+//        let format = UIGraphicsImageRendererFormat()
+//        format.scale = 1
+
+        return UIGraphicsImageRenderer(size: size, format: format).image { _ in
+            draw(in: CGRect(origin: .zero, size: size))
+        }
+    }
+}
+
 final class NewPostViewModel: ObservableObject {
     @Published var photo: UIImage?
     @Published var description = ""
     @Published var isPhotoPickerShown = false
+    
+    func createPost() {
+        guard let photo = preparePhoto(photo) else { return }
+        
+        let newPost = NewPost(text: description, photos: [photo])
+        
+        var request = URLRequest(url: URL(string: "https://fitstagram.ackee.cz/api/feed")!)
+        request.httpMethod = "POST"
+        request.httpBody = try? JSONEncoder().encode(newPost)
+        request.addValue("hromalu1", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared
+            .dataTask(with: request) { data, response, error in
+                //print("[DATA]", data)
+                //print("[RESPONSE]", response)
+                //print("[ERROR]", error)
+                if let data = data {
+                    print("[DATA]", String(data: data, encoding: .utf8))
+                }
+            }
+            .resume()
+    }
+    
+    private func preparePhoto(_ photo: UIImage?) -> String? {
+        guard let photo = photo else { return nil }
+        
+        var image = photo
+        if max(photo.imageSizeInPixel().width, photo.imageSizeInPixel().height) > 2048 {
+            let newWidth: CGFloat
+            let newHeight: CGFloat
+            
+            if photo.size.height > photo.size.width {
+                newHeight = 2048 / photo.scale
+                newWidth = photo.size.width / photo.size.height * newHeight
+            } else {
+                newWidth = 2048 / photo.scale
+                newHeight = photo.size.height / photo.size.width * newWidth
+            }
+            
+            let size = CGSize(width: newWidth, height: newHeight)
+            image = photo.resized(to: size)
+        }
+
+        return image.jpegData(compressionQuality: 1)?.base64EncodedString()
+    }
 }
 
 struct NewPostView: View {
@@ -56,7 +127,7 @@ struct NewPostView: View {
                     Spacer(minLength: 32)
                     
                     Button {
-                        // TODO: Implement
+                        viewModel.createPost()
                     } label: {
                         Text("Create post")
                             .fontWeight(.bold)
