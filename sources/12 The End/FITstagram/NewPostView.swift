@@ -8,7 +8,9 @@
 import SwiftUI
 
 final class NewPostViewModel: ObservableObject {
+    @Published var photo: UIImage?
     @Published var description = ""
+    @Published var isPhotoPickerShown = false
 }
 
 struct NewPostView: View {
@@ -21,10 +23,28 @@ struct NewPostView: View {
                     Text("Photo")
                         .font(.system(.headline))
                     
-                    Rectangle()
-                        .fill(.red)
-                        .aspectRatio(1, contentMode: .fit)
-                        .padding(.top, 8)
+                    Button {
+                        viewModel.isPhotoPickerShown = true
+                    } label: {
+                        Rectangle()
+                            .fill(Color(.secondarySystemBackground))
+                            .overlay(
+                                Group {
+                                    if let photo = viewModel.photo {
+                                        Image(uiImage: photo)
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                    } else {
+                                        Image(systemName: "plus.circle")
+                                            .resizable()
+                                            .frame(width: 64, height: 64)
+                                    }
+                                }
+                            )
+                            .clipped()
+                    }
+                    .aspectRatio(1, contentMode: .fit)
+                    .padding(.top, 8)
                     
                     Text("Description")
                         .font(.system(.headline))
@@ -53,6 +73,9 @@ struct NewPostView: View {
             }
         }
         .navigationTitle("New post")
+        .sheet(isPresented: $viewModel.isPhotoPickerShown) {
+            ImagePicker(isPresented: $viewModel.isPhotoPickerShown, image: $viewModel.photo)
+        }
     }
 }
 
