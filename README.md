@@ -178,6 +178,12 @@ Rozsah práce by mělo být 3 - 5 obrazovek (může být míň, pokud to dává 
 
 ### 11 Animations
 
+* Implicit Animations
+* Explicit Animations
+* Transitions, `AnyTransition`
+* `Animatable`, `AnimatableModifier`
+* [Lottie](https://lottiefiles.com/)
+
 ### 12 Final one
 
 * Implementace druhého domácího úkolu
